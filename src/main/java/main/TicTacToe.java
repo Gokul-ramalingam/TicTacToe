@@ -1,4 +1,4 @@
-package main;
+ package main;
 
 import java.util.*;
 
@@ -17,11 +17,97 @@ public static int[][] ticbox;
 		
 		
 		//write your code here !!!
+		int rowOccupied = 0;
+		int columnOccupied = 0;
+		int diagonalOccupied = 0;
+		for(int i = 0;i < 3;i++)	
+		{
+			
+			int count1 = 0;
+		    int count2 = 0;
+		    
+		  for(int j = 0; j < 3;j++)
+		  {
+		     if(tic[i][j] == 1)
+		     {
+		       count1++;
+		     }
+		     else if(tic[i][j] == 2)
+		     {
+		       count2++;
+		     }
+		     if(count1 == 3)
+		    	 rowOccupied = 1;
+		     else if(count2 == 3)
+		    	 rowOccupied = 2;
+		  }
+		}
 		
 		
+		for(int i = 0;i < 3;i++)	
+		{
+			
+			int count1 = 0;
+		    int count2 = 0;
+		    
+		  for(int j = 0; j < 3;j++)
+		  {
+		     if(tic[j][i] == 1)
+		     {
+		       count1++;
+		     }
+		     else if(tic[j][i] == 2)
+		     {
+		       count2++;
+		     }
+		     if(count1 == 3)
+		    	 columnOccupied = 1;
+		     else if(count2 == 3)
+		    	 columnOccupied = 2;
+		  }
+		}
 		
-		return 0;
 		
+		for(int i = 0;i < 3;i++)	
+		{
+			
+			int count1 = 0;
+		    int count2 = 0;
+		    
+		  for(int j = 0; j < 3;j++)
+		  {
+			  if(i == j)
+			  {
+		     if(tic[j][i] == 1)
+		     {
+		       count1++;
+		     }
+		     else if(tic[j][i] == 2)
+		     {
+		       count2++;
+		     }
+		     if(count1 == 3)
+		    	 diagonalOccupied = 1;
+		     else if(count2 == 3)
+		    	 diagonalOccupied = 2;
+		  }
+		}
+		}
+		
+ 	if(rowOccupied == 1)
+ 	    return 1;
+ 	else if(rowOccupied == 2)
+ 		return 2;
+ 	else if(columnOccupied == 1)
+ 		return 1;
+ 	else if(columnOccupied == 2)
+ 		return 2;
+ 	else if(diagonalOccupied == 1)
+ 		return 1;
+ 	else if(diagonalOccupied == 2)
+ 		return 2;
+ 	else
+ 		return 0;
 	}
 	
 	public static void printBox(int [][]tic) {
@@ -40,9 +126,24 @@ public static int[][] ticbox;
 		
 		
 		//Write your code here !!!
-		
-		
-		return false;
+		boolean flag = false;
+		if((a1 > -1 && a1 < 3) && (a2 > -1 && a2 < 3))
+		{
+				if(tic[a1][a2] == 0)
+				{
+					flag = true;
+				}
+				else
+				{
+					flag = false;
+				}
+				
+		}
+		else
+		{
+			flag = false;
+		}
+		return flag;
 	}
 	public static void main(String args[]) {
 		
